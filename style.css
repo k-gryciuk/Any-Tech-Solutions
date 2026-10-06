@@ -1,88 +1,87 @@
-/* ===== COLOR VARIABLES: change colors here and they update everywhere ===== */
 :root {
-  --blue: #4a6178;        /* main blue (buttons, hover) */
-  --blue-dark: #34475a;   /* dark blue (header, footer, headings) */
-  --blue-light: #e8eef3;  /* light blue (alternate section background) */
-  --text: #1f2933;        /* dark gray for body text */
+  --blue: #4a6178;
+  --blue-dark: #34475a;
+  --blue-light: #e8eef3;
+  --text: #1f2933;
   --white: #ffffff;
 }
-
-/* ===== BASE STYLES ===== */
-/* Makes padding and borders count inside an element's width */
 * { box-sizing: border-box; }
-
-/* Default text: large 20px size for easy reading */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   font-size: 20px;
-  line-height: 1.6;       /* space between lines */
+  line-height: 1.6;
   color: var(--text);
   background: var(--white);
 }
-
-/* ===== HEADER AND NAVIGATION ===== */
-/* Dark blue bar at the top with centered text */
-header { background: var(--blue-dark); color: var(--white); padding: 24px 20px 0; text-align: center; }
-header h1 { margin: 0 0 16px; font-size: 44px; }
-
-/* Row of menu links, centered; wraps to a new line if there's no room */
-nav { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; padding-bottom: 16px; }
-nav a { color: var(--white); text-decoration: none; padding: 10px 22px; border-radius: 6px; font-weight: bold; }
-
-/* Highlight a link on hover and for the page you're currently on */
-nav a:hover, nav a.active { background: var(--blue); }
-
-/* Hamburger button: hidden on desktop, shown on mobile (see bottom) */
-#menu-btn { display: none; background: var(--blue); color: var(--white); border: 0; font-size: 20px; padding: 10px 20px; margin-bottom: 16px; border-radius: 6px; cursor: pointer; }
-
-/* Yellow outline shows keyboard users where they are (accessibility) */
+header {
+  background: linear-gradient(135deg, #2b3b4c 0%, #4a6178 100%);
+  color: var(--white);
+  padding: 36px 20px 28px;
+  text-align: center;
+  border-bottom: 6px solid #f2c14e;
+}
+header h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin: 0 0 24px;
+  font-size: 46px;
+  letter-spacing: 0.5px;
+}
+header h1::before {
+  content: "";
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: 14px;
+  background: #f2c14e url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232b3b4c' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z'/%3E%3C/svg%3E") center / 60% no-repeat;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+nav {
+  display: flex;
+  width: fit-content;
+  margin: 0 auto;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  padding: 6px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 40px;
+}
+nav a {
+  color: var(--white);
+  text-decoration: none;
+  padding: 10px 26px;
+  border-radius: 30px;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+nav a:hover { background: rgba(255, 255, 255, 0.2); }
+nav a.active { background: var(--white); color: var(--blue-dark); }
+#menu-btn { display: none; background: var(--blue); color: var(--white); border: 0; font-size: 20px; padding: 10px 20px; margin-bottom: 16px; border-radius: 30px; cursor: pointer; }
 a:focus, button:focus, input:focus, select:focus, textarea:focus { outline: 3px solid #ffbf47; }
-
-/* ===== PAGE CONTENT ===== */
-/* Keeps content in a centered column so lines aren't too long */
 main { max-width: 800px; margin: 0 auto; padding: 0 20px; }
-
-/* Space above and below each section */
 section { padding: 60px 0; }
-
-/* Alternate sections get a light blue background that stretches full width */
 section.alt { background: var(--blue-light); margin: 0 -20px; padding: 60px 20px; }
-
-/* Headings */
 h2 { font-size: 34px; color: var(--blue-dark); margin-top: 0; }
-
-/* Lists: big text with space between items */
 ul { padding-left: 24px; }
 li { margin-bottom: 12px; font-size: 24px; }
-
-/* ===== BUTTONS ===== */
-/* Large, easy-to-tap button (works on links and real buttons) */
 .button { display: inline-block; background: var(--blue-dark); color: var(--white); padding: 16px 32px; font-size: 24px; font-weight: bold; text-decoration: none; border-radius: 6px; border: 0; cursor: pointer; }
 .button:hover { background: var(--blue); }
-
-/* ===== APPOINTMENT FORM ===== */
-/* Stack form fields vertically with a small gap */
 form { display: grid; gap: 8px; }
 label { font-weight: bold; margin-top: 12px; }
-
-/* Input boxes: large text, full width, blue border */
 input, select, textarea { font-family: inherit; font-size: 20px; padding: 12px; border: 2px solid var(--blue); border-radius: 6px; width: 100%; }
-
-/* Red error text under a field (min-height keeps layout from jumping) */
 .error { color: #b00020; font-size: 18px; min-height: 1.2em; }
-
-/* Message below the form: hidden until the JS adds the "success" class */
 #form-message { margin-top: 20px; padding: 16px; border-radius: 6px; font-weight: bold; display: none; }
 #form-message.success { display: block; background: #dff3e4; color: #1b5e20; }
-
-/* ===== FOOTER ===== */
 footer { background: var(--blue-dark); color: var(--white); text-align: center; padding: 30px 20px; }
-
-/* ===== MOBILE LAYOUT (screens 650px wide or smaller) ===== */
 @media (max-width: 650px) {
-  header h1 { font-size: 32px; }          /* smaller title on phones */
-  #menu-btn { display: inline-block; }    /* show the hamburger button */
-  nav { display: none; flex-direction: column; align-items: stretch; }  /* hide links, stack them */
-  nav.open { display: flex; }             /* JS adds "open" to show the menu */
+  header h1 { font-size: 28px; gap: 12px; }
+  header h1::before { width: 44px; height: 44px; }
+  #menu-btn { display: inline-block; }
+  nav { display: none; flex-direction: column; align-items: stretch; border-radius: 16px; }
+  nav a { border-radius: 10px; }
+  nav.open { display: flex; }
 }
