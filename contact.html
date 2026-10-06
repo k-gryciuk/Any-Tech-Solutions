@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact | Any Tech Solutions</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Any Tech Solutions</h1>
+    <button id="menu-btn" aria-label="Open menu">Menu</button>
+    <nav id="nav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html" class="active">Contact</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+  <main>
+    <section>
+      <h2>Contact Us</h2>
+      <p>The fastest way to reach us is by phone: <strong>(555) 555-5555</strong>, any time, day or night.</p>
+    </section>
+    <section class="alt">
+      <h2>Book an Appointment</h2>
+      <form id="appointment-form" novalidate>
+        <label for="name">Your name</label>
+        <input type="text" id="name" name="name">
+        <span class="error" id="name-error"></span>
+
+        <label for="phone">Phone number</label>
+        <input type="tel" id="phone" name="phone">
+        <span class="error" id="phone-error"></span>
+
+        <label for="service">What do you need help with?</label>
+        <select id="service" name="service">
+          <option value="">Choose one</option>
+          <option>Tech repair</option>
+          <option>Mobile repair</option>
+          <option>Networking and Wi-Fi</option>
+          <option>Printer repair</option>
+          <option>Something else</option>
+        </select>
+        <span class="error" id="service-error"></span>
+
+        <label for="details">Tell us more (optional)</label>
+        <textarea id="details" name="details" rows="4"></textarea>
+
+        <button type="submit" class="button">Book appointment</button>
+      </form>
+      <div id="form-message"></div>
+    </section>
+  </main>
+  <footer>
+    <p>Call us 24/7: (555) 555-5555</p>
+    <p>&copy; 2026 Any Tech Solutions</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
