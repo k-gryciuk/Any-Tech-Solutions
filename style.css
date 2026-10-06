@@ -1,44 +1,88 @@
+/* ===== COLOR VARIABLES: change colors here and they update everywhere ===== */
 :root {
-  --blue: #4a6178;
-  --blue-dark: #34475a;
-  --blue-light: #e8eef3;
-  --text: #1f2933;
+  --blue: #4a6178;        /* main blue (buttons, hover) */
+  --blue-dark: #34475a;   /* dark blue (header, footer, headings) */
+  --blue-light: #e8eef3;  /* light blue (alternate section background) */
+  --text: #1f2933;        /* dark gray for body text */
   --white: #ffffff;
 }
+
+/* ===== BASE STYLES ===== */
+/* Makes padding and borders count inside an element's width */
 * { box-sizing: border-box; }
+
+/* Default text: large 20px size for easy reading */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   font-size: 20px;
-  line-height: 1.6;
+  line-height: 1.6;       /* space between lines */
   color: var(--text);
   background: var(--white);
 }
+
+/* ===== HEADER AND NAVIGATION ===== */
+/* Dark blue bar at the top with centered text */
 header { background: var(--blue-dark); color: var(--white); padding: 24px 20px 0; text-align: center; }
 header h1 { margin: 0 0 16px; font-size: 44px; }
+
+/* Row of menu links, centered; wraps to a new line if there's no room */
 nav { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; padding-bottom: 16px; }
 nav a { color: var(--white); text-decoration: none; padding: 10px 22px; border-radius: 6px; font-weight: bold; }
+
+/* Highlight a link on hover and for the page you're currently on */
 nav a:hover, nav a.active { background: var(--blue); }
+
+/* Hamburger button: hidden on desktop, shown on mobile (see bottom) */
 #menu-btn { display: none; background: var(--blue); color: var(--white); border: 0; font-size: 20px; padding: 10px 20px; margin-bottom: 16px; border-radius: 6px; cursor: pointer; }
+
+/* Yellow outline shows keyboard users where they are (accessibility) */
 a:focus, button:focus, input:focus, select:focus, textarea:focus { outline: 3px solid #ffbf47; }
+
+/* ===== PAGE CONTENT ===== */
+/* Keeps content in a centered column so lines aren't too long */
 main { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+
+/* Space above and below each section */
 section { padding: 60px 0; }
+
+/* Alternate sections get a light blue background that stretches full width */
 section.alt { background: var(--blue-light); margin: 0 -20px; padding: 60px 20px; }
+
+/* Headings */
 h2 { font-size: 34px; color: var(--blue-dark); margin-top: 0; }
+
+/* Lists: big text with space between items */
 ul { padding-left: 24px; }
 li { margin-bottom: 12px; font-size: 24px; }
+
+/* ===== BUTTONS ===== */
+/* Large, easy-to-tap button (works on links and real buttons) */
 .button { display: inline-block; background: var(--blue-dark); color: var(--white); padding: 16px 32px; font-size: 24px; font-weight: bold; text-decoration: none; border-radius: 6px; border: 0; cursor: pointer; }
 .button:hover { background: var(--blue); }
+
+/* ===== APPOINTMENT FORM ===== */
+/* Stack form fields vertically with a small gap */
 form { display: grid; gap: 8px; }
 label { font-weight: bold; margin-top: 12px; }
+
+/* Input boxes: large text, full width, blue border */
 input, select, textarea { font-family: inherit; font-size: 20px; padding: 12px; border: 2px solid var(--blue); border-radius: 6px; width: 100%; }
+
+/* Red error text under a field (min-height keeps layout from jumping) */
 .error { color: #b00020; font-size: 18px; min-height: 1.2em; }
+
+/* Message below the form: hidden until the JS adds the "success" class */
 #form-message { margin-top: 20px; padding: 16px; border-radius: 6px; font-weight: bold; display: none; }
 #form-message.success { display: block; background: #dff3e4; color: #1b5e20; }
+
+/* ===== FOOTER ===== */
 footer { background: var(--blue-dark); color: var(--white); text-align: center; padding: 30px 20px; }
+
+/* ===== MOBILE LAYOUT (screens 650px wide or smaller) ===== */
 @media (max-width: 650px) {
-  header h1 { font-size: 32px; }
-  #menu-btn { display: inline-block; }
-  nav { display: none; flex-direction: column; align-items: stretch; }
-  nav.open { display: flex; }
+  header h1 { font-size: 32px; }          /* smaller title on phones */
+  #menu-btn { display: inline-block; }    /* show the hamburger button */
+  nav { display: none; flex-direction: column; align-items: stretch; }  /* hide links, stack them */
+  nav.open { display: flex; }             /* JS adds "open" to show the menu */
 }
