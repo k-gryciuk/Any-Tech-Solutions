@@ -1,69 +1,76 @@
-// ===== 1. MOBILE MENU TOGGLE =====
-// Get the menu button and the navigation links from the page
+// ---------- mobile menu ----------
 var menuBtn = document.getElementById("menu-btn");
 var nav = document.getElementById("nav");
 
-// Only run if the button exists on this page
-if (menuBtn) {
-  // When the button is clicked, show or hide the menu
+// these only exist if the page has a menu, so check first
+if (menuBtn && nav) {
   menuBtn.addEventListener("click", function () {
     nav.classList.toggle("open");
   });
+
+  // close the menu after a link is tapped
+  var navLinks = nav.getElementsByTagName("a");
+  for (var i = 0; i < navLinks.length; i++) {
+    navLinks[i].addEventListener("click", function () {
+      nav.classList.remove("open");
+    });
+  }
 }
 
-// ===== 2. APPOINTMENT FORM VALIDATION =====
-// Get the form (it only exists on the contact page)
+// ---------- appointment form ----------
 var form = document.getElementById("appointment-form");
 
-// Only run if the form exists on this page
+// only the contact page has this form
 if (form) {
-  // Run this code when the user clicks submit
+  var nameInput = document.getElementById("name");
+  var phoneInput = document.getElementById("phone");
+  var serviceInput = document.getElementById("service");
+
+  var nameError = document.getElementById("name-error");
+  var phoneError = document.getElementById("phone-error");
+  var serviceError = document.getElementById("service-error");
+  var message = document.getElementById("form-message");
+
   form.addEventListener("submit", function (event) {
-    // Stop the page from reloading
+    // stop the page from refreshing
     event.preventDefault();
 
-    // Read what the user typed (trim removes extra spaces)
-    var name = document.getElementById("name").value.trim();
-    var phone = document.getElementById("phone").value.trim();
-    var service = document.getElementById("service").value;
-
-    // Assume the form is valid until a check fails
+    var name = nameInput.value.trim();
+    var phone = phoneInput.value.trim();
+    var service = serviceInput.value;
     var valid = true;
 
-    // Clear any old error messages
-    document.getElementById("name-error").textContent = "";
-    document.getElementById("phone-error").textContent = "";
-    document.getElementById("service-error").textContent = "";
+    // wipe errors from the last try
+    nameError.textContent = "";
+    phoneError.textContent = "";
+    serviceError.textContent = "";
 
-    // Check 1: name must not be empty
+    // name can't be blank
     if (name === "") {
-      document.getElementById("name-error").textContent = "Please enter your name.";
+      nameError.textContent = "Please enter your name.";
       valid = false;
     }
 
-    // Check 2: phone needs at least 10 digits (symbols and spaces are ignored)
+    // count only the digits so (516) 555-1234 and 5165551234 both work
     if (phone.replace(/\D/g, "").length < 10) {
-      document.getElementById("phone-error").textContent = "Please enter a phone number with at least 10 digits.";
+      phoneError.textContent = "Please enter a phone number with at least 10 digits.";
       valid = false;
     }
 
-    // Check 3: a service must be chosen
+    // they have to pick a service
     if (service === "") {
-      document.getElementById("service-error").textContent = "Please choose a service.";
+      serviceError.textContent = "Please choose a service.";
       valid = false;
     }
-
-    // Get the area where the success message will appear
-    var message = document.getElementById("form-message");
 
     if (valid) {
-      // All checks passed: show a thank-you message and empty the form
       message.className = "success";
       message.textContent = "Thank you, " + name + ". We will call you shortly to confirm your appointment.";
       form.reset();
     } else {
-      // Something was wrong: remove the success styling
+      // hide the success box if it was showing from before
       message.className = "";
+      message.textContent = "";
     }
   });
 }
