@@ -1,15 +1,29 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Set the character encoding -->
   <meta charset="UTF-8">
+
+  <!-- Makes the page work well on different screen sizes -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Sets the page title -->
   <title>Contact | Any Tech Solutions</title>
+
+  <!-- Connects the CSS stylesheet -->
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+  <!-- Header contains the company name and navigation -->
   <header>
     <h1>Any Tech Solutions</h1>
+
+    <!-- Button used to open the menu -->
     <button id="menu-btn" aria-label="Open menu">Menu</button>
+
+    <!-- Navigation links -->
     <nav id="nav">
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
@@ -17,22 +31,34 @@
       <a href="about.html">About</a>
     </nav>
   </header>
+
+  <!-- Main content of the page -->
   <main>
+
+    <!-- Contact information section -->
     <section>
       <h2>Contact Us</h2>
       <p>The fastest way to reach us is by phone: <strong>(516) 738-0000</strong>, any time, day or night.</p>
     </section>
+
+    <!-- Appointment form section -->
     <section class="alt">
       <h2>Book an Appointment</h2>
+
+      <!-- Form for booking an appointment -->
       <form id="appointment-form" novalidate>
+
+        <!-- Name field -->
         <label for="name">Your name</label>
         <input type="text" id="name" name="name">
         <span class="error" id="name-error"></span>
 
+        <!-- Phone number field -->
         <label for="phone">Phone number</label>
         <input type="tel" id="phone" name="phone">
         <span class="error" id="phone-error"></span>
 
+        <!-- Service selection -->
         <label for="service">What do you need help with?</label>
         <select id="service" name="service">
           <option value="">Choose one</option>
@@ -44,18 +70,27 @@
         </select>
         <span class="error" id="service-error"></span>
 
+        <!-- Optional details field -->
         <label for="details">Tell us more (optional)</label>
         <textarea id="details" name="details" rows="4"></textarea>
 
+        <!-- Submit button -->
         <button type="submit" class="button">Book appointment</button>
       </form>
+
+      <!-- Displays messages after the form is submitted -->
       <div id="form-message"></div>
     </section>
   </main>
+
+  <!-- Footer contains contact information and copyright -->
   <footer>
     <p>Call us 24/7: (516) 738-0000</p>
     <p>&copy; 2026 Any Tech Solutions</p>
   </footer>
+
+  <!-- Connects the JavaScript file -->
   <script src="script.js"></script>
 </body>
 </html>
+```
